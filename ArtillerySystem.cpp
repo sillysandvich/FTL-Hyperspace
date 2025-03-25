@@ -135,15 +135,6 @@ HOOK_METHOD(CombatControl, KeyDown, (SDLKey key) -> void)
     }
 }
 
-void CombatControl::ArmArtillery(ArtillerySystem* artillerySystem)
-{
-    ProjectileFactory* artilleryWeapon = artillerySystem->projectileFactory;
-    artilleryWeapon->ClearAiming();
-    weapControl.armedWeapon = artilleryWeapon;
-    weapControl.armedSlot = -1;
-    UpdateAiming();
-}
-
 HOOK_METHOD(CombatControl, KeyDown, (SDLKey key) -> void)
 {
     LOG_HOOK("HOOK_METHOD -> CombatControl::KeyDown -> Begin (ArtillerySystem.cpp)\n")
