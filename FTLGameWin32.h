@@ -1198,6 +1198,8 @@ struct ArtilleryBox : CooldownSystemBox
 		this->constructor(pos, sys);
 	}
 
+	int _HS_GetHeightModifier();
+
 	LIBZHL_API void OnRender(bool ignoreStatus);
 	LIBZHL_API void constructor(Point pos, ArtillerySystem *sys);
 	
@@ -7166,6 +7168,9 @@ struct ShipManager : ShipObject
 
 	int SystemWillReplace(int systemId);
 
+	bool CanFitCrew(const std::string& crewName);
+
+
 	LIBZHL_API void AddCrewMember(CrewMember *crew, int roomId);
 	LIBZHL_API CrewMember *AddCrewMemberFromBlueprint(CrewBlueprint *bp, int slot, bool init, int roomId, bool intruder);
 	LIBZHL_API CrewMember *AddCrewMemberFromString(const std::string &name, const std::string &race, bool intruder, int roomId, bool init, bool male);
@@ -7505,7 +7510,7 @@ struct WindowFrame
 
 struct StarMap : FocusWindow
 {
-	
+    bool WillBeOvertaken(Location* loc);
 
 	struct NebulaInfo
 	{
